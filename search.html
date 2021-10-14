@@ -114,28 +114,6 @@
         for (var i = 0; i < 24; i++) {
             ids.push("IMG-" + i)
         }
-        function reset() {
-            triesCount = 0;
-            animalLocation = Math.round(Math.random() * (23 - 0) + 0);
-            document.getElementById("tries").innerHTML = "Number of tries is zero";
-            AnimalDistance = "unknown"
-            document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
-            for (var i = 0; i < 24; i++) {
-                document.getElementById(ids[i]).src = "tree.jpg";
-            }
-            }
-            function reset() {
-                triesCount = 0;
-                animalLocation = Math.round(Math.random() * (23 - 0) + 0);
-                document.getElementById("tries").innerHTML = "Number of tries is zero";
-                AnimalDistance = "unknown"
-                document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
-                for (var i = 0; i < 24; i++) {
-
-                    document.getElementById(ids[i]).src = "tree.jpg";
-                }
-
-            }
             function check(index) {
                 let id = ids[index];
                 if (index == animalLocation) {
