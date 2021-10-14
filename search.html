@@ -114,41 +114,51 @@
         for (var i = 0; i < 24; i++) {
             ids.push("IMG-" + i)
         }
-            function check(index) {
-                let id = ids[index];
-                if (index == animalLocation) {
-                    document.getElementById(id).src = "dirt.jpg";
-                } else {
-                    document.getElementById(id).src = "kangaroo.jpg";
-                }
-                triesCount++;
-                document.getElementById("tries").innerHTML = "Number of tries are " + triesCount;
-                AnimalDistance = distance(index, animalLocation);
-
-                document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
+        function reset() {
+            triesCount = 0;
+            animalLocation = Math.round(Math.random() * (23 - 0) + 0);
+            document.getElementById("tries").innerHTML = "Number of tries is zero";
+            AnimalDistance = "unknown"
+            document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
+            for (var i = 0; i < 24; i++) {
+                document.getElementById(ids[i]).src = "tree.jpg";
             }
-            function distance(pos1, pos2) {
-                var columm = 6;
-                var totalValue = pos1 <= animalLocation ? columm : -columm;
-                var VerticalDistance = 0;
-                var horizantalDistance = 0;
-                var minimumRange = Math.abs(animalLocation / columm) * columm;
-                var maximumRange = minimumRange + (columm)
-                while (true) {
-
-                    Math.abs(animalLocation - pos1)
-                    if (minimumRange <= pos1 && pos1 < maximumRange) {
-                        horizantalDistance = Math.abs(animalLocation - pos1);
-                        break;
-                    }
-                    else {
-                        pos1 = pos1 + totalValue;
-                        VerticalDistance = VerticalDistance + 1;
-                    }
-                }
-
-                return Math.max(VerticalDistance, horizantalDistance);
+        }
+        function check(index) {
+            let id = ids[index];
+            if (index == animalLocation) {
+                document.getElementById(id).src = "dirt.jpg";
+            } else {
+                document.getElementById(id).src = "kangaroo.jpg";
             }
+            triesCount++;
+            document.getElementById("tries").innerHTML = "Number of tries are " + triesCount;
+            AnimalDistance = distance(index, animalLocation);
+
+            document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
+        }
+        function distance(pos1, pos2) {
+            var columm = 6;
+            var totalValue = pos1 <= animalLocation ? columm : -columm;
+            var VerticalDistance = 0;
+            var horizantalDistance = 0;
+            var minimumRange = Math.abs(animalLocation / columm) * columm;
+            var maximumRange = minimumRange + (columm)
+            while (true) {
+
+                Math.abs(animalLocation - pos1)
+                if (minimumRange <= pos1 && pos1 < maximumRange) {
+                    horizantalDistance = Math.abs(animalLocation - pos1);
+                    break;
+                }
+                else {
+                    pos1 = pos1 + totalValue;
+                    VerticalDistance = VerticalDistance + 1;
+                }
+            }
+
+            return Math.max(VerticalDistance, horizantalDistance);
+        }
     </script>
 </body>
 
