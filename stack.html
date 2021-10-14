@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Constructing Stacks</title>
+<style>
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(228, 27, 127);
+}
+.flex-container>div {
+/*div children of the flex container*/
+	background-color: #794ab6;
+	margin: 10px;
+	padding: 20px;
+	font-size: 30px;
+	}
+/* Responsive layout */
+	@media (max-width: 600px) {
+	.flex-container {
+	flex-direction: column;
+	background-color: rgb(32, 160, 32);
+	}
+}
+.inputs>input {
+width: 20%;
+border:rgb(91, 204, 151);
+border-bottom: 1px solid black;
+font-size: medium;
+padding: 4px;
+}
+.push{
+background-color: rgb(214, 151, 55);
+border: black;
+color: rgb(226, 77, 77);
+padding: 5px;
+font-size: larger;
+margin-left: 15px;
+font-weight: bold;
+}
+.push:hover {
+background-color: rgb(59, 57, 172);
+color: brown;
+font-weight: bold;
+}
+.pop ,.zap{
+background-color:rgba(160, 45, 93, 0.527);
+border: rgb(165, 38, 38);
+color: rgb(97, 101, 105);
+padding: 5px;
+font-size: larger;
+margin-left: 20px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>Bikash Adhikari builds a stack</h1>
+<div>
+	</div>
+	<div class="flex-container" id="target">
+	<div class="stack">item row 1</div>
+	<div class="stack">item row 2</div>
+	<div class="stack">item row 3</div>
+</div>
+<p> Press the button to create an new element of type div and then add it to the container.
+</p>
+<div class="inputs">
+	<input id="input" type="text" />
+	<button class="push" onclick="makeNewDiv()">Push value</button>
+	<button class="pop" onclick="popItem()">Pop</button>
+	<button class="zap" onclick="Zapvalues()">Zap values</button>
+</div>
+</body>
+<script>
+function makeNewDiv() {
+ let info = document.getElementById("input").value;
+ let element = document.createElement("div")
+ element.innerHTML = info
+ element.className = "stack"
+document.getElementById('target').appendChild(element)
+}
+function popItem() {
+let stackItems = document.getElementsByClassName('stack');
+if (stackItems != undefined && stackItems.length > 0) {
+stackItems[stackItems.length - 1].remove();
+ }
+}
+function Zapvalues() {
+ let info = document.getElementById("input").value;
+ let stackItems = document.getElementsByClassName('stack');
+	if (stackItems != undefined && stackItems.length > 0) {
+	let stacksLength = stackItems.length;
+	for (let index = 0; index < stackItems.length; index++) {
+	let element = stackItems[index].innerHTML;
+	if (element == info) {
+	console.log(stackItems[index])
+	stackItems[index].remove();
+	index--;
+		}
+	}
+}
+}
+</script>
+</html>
